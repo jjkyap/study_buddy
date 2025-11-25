@@ -1,0 +1,6 @@
+Flask
+python-dotenv
+sentence-transformers
+chromadb
+numpy
+pdfplumber
