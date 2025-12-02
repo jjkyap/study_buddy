@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card card-narrow">
+  <h2>Login</h2>
+  <form method="POST" action="{{ url_for('handle_login') }}">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Login</button>
+    <p class="hint">Use the demo credentials from your .env file.</p>
+  </form>
+</div>
+{% endblock %}

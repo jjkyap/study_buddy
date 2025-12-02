@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+  <h2>Notes → Summary & Flashcards</h2>
+
+  <form id="note-form" enctype="multipart/form-data">
+    <label for="note_text">Paste notes (optional):</label>
+    <textarea id="note_text" name="note_text" rows="10"
+              placeholder="Paste notes or upload a file..."></textarea>
+
+    <label for="file">Or upload a .txt or .pdf file:</label>
+    <input type="file" id="file" name="file" accept=".txt,.pdf">
+
+    <div class="button-row">
+      <button type="submit" id="submit-btn">Process Note</button>
+      <button type="button" id="clear-btn" class="secondary">Clear</button>
+    </div>
+  </form>
+
+  <div id="loading" class="hidden loading-text">Processing with AI...</div>
+
+  <div id="results" class="results hidden">
+    <h3>Summary</h3>
+    <pre id="summary" class="summary-box"></pre>
+
+    <h3>Flashcards</h3>
+    <ul id="flashcards" class="flashcard-list"></ul>
+
+    <h4>Debug / Telemetry</h4>
+    <pre id="telemetry" class="telemetry-box"></pre>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('note-form');
+  const loadingEl = document.getElementById('loading');
+  const resultsEl = document.getElementById('results');
+  const summaryEl = document.getElementById('summary');
+  const cardsEl = document.getElementById('flashcards');
+  const telemetryEl = document.getElementById('telemetry');
+  const submitBtn = document.getElementById('submit-btn');
+  const clearBtn = document.getElementById('clear-btn');
+  const noteTextEl = document.getElementById('note_text');
+  const fileEl = document.getElementById('file');
+
+  clearBtn.addEventListener('click', () => {
+    noteTextEl.value = "";
+    fileEl.value = "";
+    summaryEl.textContent = "";
+    cardsEl.innerHTML = "";
+    telemetryEl.textContent = "";
+    resultsEl.classList.add('hidden');
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    loadingEl.classList.remove('hidden');
+    resultsEl.classList.add('hidden');
+    summaryEl.textContent = "";
+    cardsEl.innerHTML = "";
+    telemetryEl.textContent = "";
+    submitBtn.disabled = true;
+
+    const formData = new FormData(form);
+
+    try {
+      const resp = await fetch("{{ url_for('process_note') }}", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await resp.json();
+      loadingEl.classList.add('hidden');
+      submitBtn.disabled = false;
+
+      if (!resp.ok) {
+        summaryEl.textContent = data.error || "Unknown error.";
+        resultsEl.classList.remove('hidden');
+        return;
+      }
+
+      summaryEl.textContent = data.summary || "";
+
+      if (Array.isArray(data.flashcards)) {
+        data.flashcards.forEach(card => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <div class="flashcard">
+              <div class="flashcard-q"><strong>Q:</strong> ${card.question || ''}</div>
+              <div class="flashcard-a"><strong>A:</strong> ${card.answer || ''}</div>
+            </div>`;
+          cardsEl.appendChild(li);
+        });
+      }
+
+      telemetryEl.textContent = JSON.stringify({
+        latency_ms: data.latency_ms,
+        tokens_in: data.tokens_in,
+        tokens_out: data.tokens_out,
+        cost_usd: data.cost_usd
+      }, null, 2);
+
+      resultsEl.classList.remove('hidden');
+
+    } catch (err) {
+      console.error(err);
+      loadingEl.classList.add('hidden');
+      submitBtn.disabled = false;
+      summaryEl.textContent = "Network or server error.";
+      resultsEl.classList.remove('hidden');
+    }
+  });
+</script>
+{% endblock %}

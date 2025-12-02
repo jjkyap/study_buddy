@@ -1,6 +1,20 @@
-Flask
+# Web framework
+flask
 python-dotenv
-sentence-transformers
-chromadb
-numpy
+
+# LLM client
+openai
+
+# OCR + PDF
 pdfplumber
+pdf2image
+pytesseract
+easyocr
+Pillow
+
+# RAG (embeddings + vector search)
+sentence-transformers
+scikit-learn
+numpy
+
+# SQLite is in stdlib, no extra dep needed

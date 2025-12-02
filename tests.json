@@ -1,0 +1,14 @@
+[
+  {
+    "input": "Photosynthesis is the process by which green plants convert light energy into chemical energy. It occurs in the chloroplasts and involves chlorophyll, water, carbon dioxide, and produces glucose and oxygen.",
+    "expected_contains": ["chloroplast", "light", "carbon dioxide"]
+  },
+  {
+    "input": "In object-oriented programming, encapsulation refers to bundling data and methods that operate on that data within a single unit or class, and restricting direct access to some of the object's components.",
+    "expected_contains": ["encapsulation", "class", "data"]
+  },
+  {
+    "input": "The derivative of a function measures the rate at which the function's value changes with respect to a change in its input. It is a fundamental concept in calculus.",
+    "expected_contains": ["rate of change", "calculus", "derivative"]
+  }
+]

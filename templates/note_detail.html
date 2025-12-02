@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+  <h2>Note Detail</h2>
+  <p><strong>Timestamp:</strong> {{ timestamp }}</p>
+
+  <h3>Original Text</h3>
+  <pre class="summary-box">{{ raw_text }}</pre>
+
+  <h3>Summary</h3>
+  <pre class="summary-box">{{ summary }}</pre>
+
+  <h3>Flashcards</h3>
+  <ul class="flashcard-list">
+    {% for card in flashcards %}
+      <li>
+        <div class="flashcard">
+          <div class="flashcard-q"><strong>Q:</strong> {{ card.question }}</div>
+          <div class="flashcard-a"><strong>A:</strong> {{ card.answer }}</div>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+timestamp,pathway,latency_ms,tokens_in,tokens_out,cost_usd,error
+2025-12-02T21:58:55.987524,rag,18798,,,,"Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+2025-12-02T22:02:12.528716,rag,11090,,,,"Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+2025-12-02T22:02:39.328490,rag,0,,,,Please enter some text or upload a file.
+2025-12-02T22:02:44.085659,rag,0,,,,Please enter some text or upload a file.
+2025-12-02T17:29:50,rag,2960,,,,"Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+2025-12-02T17:38:10,rag,10435,,,,"Error code: 400 - {'error': {'message': 'deepseek-r1:free is not a valid model ID', 'code': 400}, 'user_id': 'user_36JBMq8hQxulUyYDtcn60kw0av2'}"
+2025-12-02T17:46:37,rag,39717,,,,"Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'qwen/qwen3-235b-a22b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice'}}, 'user_id': 'user_36JBMq8hQxulUyYDtcn60kw0av2'}"
+2025-12-02T18:01:54,rag,30278,,,,Expecting value: line 1 column 1 (char 0)
+2025-12-02T18:09:31,rag,28109,,,,table notes has no column named flashcards_json
+2025-12-02T18:13:42,rag,26805,0,0,0,
+2025-12-02T18:15:32,rag,29791,0,0,0,
+2025-12-02T18:16:46,rag,45117,,,,'NoneType' object is not subscriptable
+2025-12-02T18:22:43,rag,36536,0,0,0,
+2025-12-02T18:23:16,rag,36759,0,0,0,
+2025-12-02T18:31:55,rag,39526,0,0,0,
