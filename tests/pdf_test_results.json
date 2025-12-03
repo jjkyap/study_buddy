@@ -1,0 +1,20 @@
+[
+  {
+    "file": "1.1_imperial_measures_of_length.pdf",
+    "passed": true,
+    "ocr_method": "hybrid_ocr",
+    "latency_ms": 23904
+  },
+  {
+    "file": "1.3_relating_si__imperial_units.pdf",
+    "passed": false,
+    "ocr_method": "hybrid_ocr",
+    "latency_ms": 24384
+  },
+  {
+    "file": "2.1_the_tangent_ratio.pdf",
+    "passed": true,
+    "ocr_method": "hybrid_ocr",
+    "latency_ms": 33984
+  }
+]

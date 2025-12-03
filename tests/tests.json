@@ -1,0 +1,22 @@
+[
+  {
+    "name": "photosynthesis_basic",
+    "input": "Photosynthesis converts light energy into glucose. Plants use chlorophyll in the chloroplasts.",
+    "expect": ["photosynthesis", "light", "glucose"]
+  },
+  {
+    "name": "derivative_definition",
+    "input": "A derivative measures instantaneous rate of change with respect to one variable.",
+    "expect": ["derivative", "rate", "change"]
+  },
+  {
+    "name": "cell_theory",
+    "input": "Cell theory states that all living things are made up of cells, which are the basic units of life.",
+    "expect": ["cell", "living", "life"]
+  },
+  {
+    "name": "tangent_ratio",
+    "input": "The tangent of an angle in a right triangle is opposite divided by adjacent.",
+    "expect": ["tangent", "opposite", "adjacent"]
+  }
+]

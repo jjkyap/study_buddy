@@ -1,9 +1,13 @@
-# database.py
 
 import sqlite3
 from typing import List, Tuple, Optional
+import os
 
-DB_PATH = "memory.db"
+# Base directory of the project (root folder)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Database location inside /data/memory.db
+DB_PATH = os.path.join(BASE_DIR, "data", "memory.db")
 
 
 def get_conn():

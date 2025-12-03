@@ -10,19 +10,25 @@ from flask import (
     url_for, session, flash, jsonify
 )
 
-from llm import generate_summary, generate_flashcards
-from rag import init_vector_store, add_note_to_rag, query_context
-from safety import validate_user_input
-from telemetry import log_telemetry
-from database import init_db, save_note, get_all_notes, get_note_by_id, delete_note
+from app.llm import generate_summary, generate_flashcards
+from app.rag import init_vector_store, add_note_to_rag, query_context
+from app.safety import validate_user_input
+from app.telemetry import log_telemetry
+from app.database import init_db, save_note, get_all_notes, get_note_by_id, delete_note
 
 # ----- Environment & Flask setup ----- #
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-ENV_PATH = os.path.join(BASE_DIR, ".env")
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ENV_PATH = os.path.join(PROJECT_ROOT, ".env")
 load_dotenv(ENV_PATH)
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    template_folder="../templates",
+    static_folder="../static"
+)
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "dev-secret-key")
+
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "dev-secret-key")
 
 DEMO_USERNAME = os.getenv("DEMO_USERNAME", "demo")
@@ -155,7 +161,7 @@ def process_note():
             raw_text = file.read().decode("utf-8", errors="ignore")
 
         elif ext == "pdf":
-            from ocr_utils import extract_text_pdf
+            from app.ocr_utils import extract_text_pdf
             pdf_bytes = file.read()
             raw_text, method_used = extract_text_pdf(pdf_bytes)
             print("OCR method used:", method_used)

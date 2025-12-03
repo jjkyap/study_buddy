@@ -1,0 +1,15 @@
+[
+  {
+    "file": "1.1_imperial_measures_of_length.pdf",
+    "expect": ["imperial", "units", "yard", "yards", "feet", "convert"]
+  },
+  {
+    "file": "1.3_relating_si__imperial_units.pdf",
+    "expect": ["imperial", "metric", "conversion", "cm", "inch"]
+  },
+  {
+    "file": "2.1_the_tangent_ratio.pdf",
+    "expect": ["tangent", "ratio", "opposite", "adjacent", "angle"]
+  }
+
+]
